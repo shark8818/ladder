@@ -1,0 +1,991 @@
+---
+mixed-port: 7893
+tcp-concurrent: false
+allow-lan: true
+ipv6: false
+mode: rule
+log-level: info
+global-client-fingerprint: chrome
+find-process-mode: strict
+external-controller: 0.0.0.0:9090
+geodata-mode: true
+geo-auto-update: true
+geo-update-interval: 3
+geox-url:
+  geoip: https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat
+  geosite: https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat
+  mmdb: https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb
+  asn: https://mirror.ghproxy.com/https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb
+profile:
+  store-selected: true
+  store-fake-ip: true
+sniffer:
+  enable: true
+  parse-pure-ip: true
+  sniff:
+    HTTP:
+      ports:
+      - 80
+      - 8080-8800
+      override-destination: true
+    TLS:
+      ports:
+      - 443
+      - 8443
+    QUIC:
+      ports:
+      - 443
+      - 8443
+  skip-domain:
+  - Mijia Cloud
+  - dlg.io.mi.com
+  - "+.apple.com"
+dns:
+  enable: true
+  ipv6: false
+  prefer-h3: true
+  listen: 0.0.0.0:7874
+  enhanced-mode: redir-host
+  fake-ip-filter:
+  - "*.lan"
+  - cable.auth.com
+  - "+.msftconnecttest.com"
+  - "+.msftncsi.com"
+  - network-test.debian.org
+  - detectportal.firefox.com
+  - resolver1.opendns.com
+  - "+.srv.nintendo.net"
+  - "+.stun.playstation.net"
+  - xbox.*.microsoft.com
+  - "+.xboxlive.com"
+  - stun.*
+  - global.turn.twilio.com
+  - global.stun.twilio.com
+  - localhost.*.qq.com
+  - "+.logon.battlenet.com.cn"
+  - "+.logon.battle.net"
+  - "+.blzstatic.cn"
+  - "+.cmpassport.com"
+  - id6.me
+  - open.e.189.cn
+  - mdn.open.wo.cn
+  - opencloud.wostore.cn
+  - auth.wosms.cn
+  - "+.jegotrip.com.cn"
+  - "+.icitymobile.mobi"
+  - "+.pingan.com.cn"
+  - "+.cmbchina.com"
+  - "+.cmbchina.com.cn"
+  - pool.ntp.org
+  - "+.pool.ntp.org"
+  - ntp.*.com
+  - time.*.com
+  - ntp?.*.com
+  - time?.*.com
+  - time.*.gov
+  - time.*.edu.cn
+  - "+.ntp.org.cn"
+  - time.*.apple.com
+  default-nameserver:
+  - 223.5.5.5
+  - 119.29.29.29
+  nameserver-policy:
+    www.baidu.com: 114.114.114.114
+    "+.internal.crop.com": 10.0.0.1
+    www.baidu.com,+.google.cn: https://doh.pub/dns-query
+    geosite:private,apple: https://dns.alidns.com/dns-query
+    rule-set:google: 8.8.8.8
+  nameserver:
+  - https://doh.pub/dns-query
+  - https://dns.alidns.com/dns-query
+  fallback:
+  - https://1.1.1.2/dns-query
+  - https://1.0.0.2/dns-query
+  - https://208.67.222.222/dns-query
+  - https://208.67.220.220/dns-query
+  - https://9.9.9.9/dns-query
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+    - gfw
+    ipcidr:
+    - 240.0.0.0/4
+    - 0.0.0.0/32
+    domain:
+    - "+.google.com"
+    - "+.github.com"
+    - "+.facebook.com"
+    - "+.twitter.com"
+    - "+.youtube.com"
+    - "+.google.cn"
+    - "+.googleapis.cn"
+    - "+.googleapis.com"
+proxies:
+- name: 香港CF1-IPV6
+  server: 2606:4700:f4:3168:4339:c10b:f207:9531
+  port: 443
+  client-fingerprint: chrome
+  type: vless
+  uuid: 2cd6ed0f-636e-4e6c-9449-5a263d7a0fa5
+  tls: true
+  tfo: false
+  servername: cfed.tgzdyz2.top
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: tg@zdyz2
+    headers:
+      Host: cfed.tgzdyz2.top
+  udp: true
+
+- name: 香港CF2-IPV6
+  server: 2606:4700:f4:0:e3:1c5:8226:8a2c
+  port: 8443
+  client-fingerprint: chrome
+  type: vless
+  uuid: 89b3cbba-e6ac-485a-9481-976a0415eab9
+  tls: true
+  tfo: false
+  servername: 698Aa4AA.Swz-UUz-316.PageS.Dev
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 698Aa4AA.Swz-UUz-316.PageS.Dev
+  udp: true
+
+- name: 香港CF3-IPV6
+  server: 2606:4700:f4:3107:c8bf:1df:169e:38f6
+  port: 2053
+  client-fingerprint: chrome
+  type: vless
+  uuid: 678ac895-92c2-4f27-a9d4-f1a89c5f5365
+  tls: true
+  tfo: false
+  servername: mositr.freenods.sbs
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: twitterfreecodes
+    headers:
+      Host: mositr.freenods.sbs
+  udp: true
+
+- name: 香港CF4-IPV6
+  server: 2606:4700:f4:0:17bc:9707:e9ea:fbba
+  port: 443
+  client-fingerprint: chrome
+  type: vless
+  uuid: 775213ac-3976-439a-8977-3277c0e4735d
+  tls: true
+  tfo: false
+  servername: fq521.6789.cloudns.be
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: twitterfreecodes
+    headers:
+      Host: fq521.6789.cloudns.be
+  udp: true
+
+- name: 香港CF5-IPV6
+  server: 2606:4700:f4:0:e3:d24f:c049:4c43
+  port: 8443
+  client-fingerprint: chrome
+  type: vless
+  uuid: d6b3de64-f0f8-4113-b49f-2660f3c031fb
+  tls: true
+  tfo: false
+  servername: 159d770e-fd74-4069-a73b-fe6ececa7951.f82aee4c-752c-4b0c-9793-380d4d76435c.ddnsgeek.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /fylink.pages.dev/proxyip=proxyip.aliyun.fxxk.dedyn.io
+    headers:
+      Host: 159d770e-fd74-4069-a73b-fe6ececa7951.f82aee4c-752c-4b0c-9793-380d4d76435c.ddnsgeek.com
+  udp: true
+
+- name: 香港CF6-IPV6
+  server: 2606:4700:f4:0:f7ea:16a0:ff90:c2e5
+  port: 8443
+  client-fingerprint: chrome
+  type: vless
+  uuid: d6b3de64-f0f8-4113-b49f-2660f3c031fb
+  tls: true
+  tfo: false
+  servername: 30388d70-6f5c-4d7c-8daa-9d3df7c5c526.9150e878-8296-4798-a172-c3fe66b8dee5.ddnsgeek.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /fylink.pages.dev/?ed=2048
+    headers:
+      Host: 30388d70-6f5c-4d7c-8daa-9d3df7c5c526.9150e878-8296-4798-a172-c3fe66b8dee5.ddnsgeek.com
+  udp: true
+
+- name: 香港CF7-IPV6
+  server: 2606:4700:f4:1c2a:352c:8d2:467f:9146
+  port: 443
+  client-fingerprint: chrome
+  type: vless
+  uuid: d7dd3a35b68b4992b319a85b8a1fc8e5
+  tls: true
+  tfo: false
+  servername: dns68.putata.eu.org
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: dns68.putata.eu.org
+  udp: true
+
+- name: 美国CF1-IPV6
+  server: 2606:4700:3030:36:4f2d:bf42:515b:b93d
+  port: 443
+  client-fingerprint: chrome
+  type: vless
+  uuid: 2cd6ed0f-636e-4e6c-9449-5a263d7a0fa5
+  tls: true
+  tfo: false
+  servername: cfed.tgzdyz2.top
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: tg@zdyz2
+    headers:
+      Host: cfed.tgzdyz2.top
+  udp: true
+
+- name: 美国CF2-IPV6
+  server: 2606:4700:3039:8ada:9dc9:738b:6f7f:512
+  port: 8443
+  client-fingerprint: chrome
+  type: vless
+  uuid: 89b3cbba-e6ac-485a-9481-976a0415eab9
+  tls: true
+  tfo: false
+  servername: 698Aa4AA.Swz-UUz-316.PageS.Dev
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 698Aa4AA.Swz-UUz-316.PageS.Dev
+  udp: true
+
+- name: 美国CF3-IPV6
+  server: 2606:4700:3034::e86f:e484:c953
+  port: 2053
+  client-fingerprint: chrome
+  type: vless
+  uuid: 678ac895-92c2-4f27-a9d4-f1a89c5f5365
+  tls: true
+  tfo: false
+  servername: mositr.freenods.sbs
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: twitterfreecodes
+    headers:
+      Host: mositr.freenods.sbs
+  udp: true
+
+- name: 美国CF4-IPV6
+  server: 2606:4700:3035:c83d:a9ca:4634:4c44:c032
+  port: 443
+  client-fingerprint: chrome
+  type: vless
+  uuid: 775213ac-3976-439a-8977-3277c0e4735d
+  tls: true
+  tfo: false
+  servername: fq521.6789.cloudns.be
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: twitterfreecodes
+    headers:
+      Host: fq521.6789.cloudns.be
+  udp: true
+
+- name: 美国CF5-IPV6
+  server: 2606:4700:3035:c83d:a965:f83f:f8cc:84e
+  port: 8443
+  client-fingerprint: chrome
+  type: vless
+  uuid: d6b3de64-f0f8-4113-b49f-2660f3c031fb
+  tls: true
+  tfo: false
+  servername: 159d770e-fd74-4069-a73b-fe6ececa7951.f82aee4c-752c-4b0c-9793-380d4d76435c.ddnsgeek.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /fylink.pages.dev/proxyip=proxyip.aliyun.fxxk.dedyn.io
+    headers:
+      Host: 159d770e-fd74-4069-a73b-fe6ececa7951.f82aee4c-752c-4b0c-9793-380d4d76435c.ddnsgeek.com
+  udp: true
+
+- name: 美国CF6-IPV6
+  server: 2606:4700:10:b8:a76a:cc97:4854:2e9f
+  port: 8443
+  client-fingerprint: chrome
+  type: vless
+  uuid: d6b3de64-f0f8-4113-b49f-2660f3c031fb
+  tls: true
+  tfo: false
+  servername: 30388d70-6f5c-4d7c-8daa-9d3df7c5c526.9150e878-8296-4798-a172-c3fe66b8dee5.ddnsgeek.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /fylink.pages.dev/?ed=2048
+    headers:
+      Host: 30388d70-6f5c-4d7c-8daa-9d3df7c5c526.9150e878-8296-4798-a172-c3fe66b8dee5.ddnsgeek.com
+  udp: true
+
+- name: 美国CF7-IPV6
+  server: 2606:4700:10:afb1:236:7f37:c4ec:8395
+  port: 443
+  client-fingerprint: chrome
+  type: vless
+  uuid: d7dd3a35b68b4992b319a85b8a1fc8e5
+  tls: true
+  tfo: false
+  servername: dns68.putata.eu.org
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: dns68.putata.eu.org
+  udp: true
+
+- name: 美国CF1
+  server: 172.67.167.88
+  port: 443
+  client-fingerprint: chrome
+  type: vless
+  uuid: 2cd6ed0f-636e-4e6c-9449-5a263d7a0fa5
+  tls: true
+  tfo: false
+  servername: cfed.tgzdyz2.top
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: tg@zdyz2
+    headers:
+      Host: cfed.tgzdyz2.top
+  udp: true
+
+- name: 美国CF2
+  server: 172.67.156.62
+  port: 8443
+  client-fingerprint: chrome
+  type: vless
+  uuid: 89b3cbba-e6ac-485a-9481-976a0415eab9
+  tls: true
+  tfo: false
+  servername: 698Aa4AA.Swz-UUz-316.PageS.Dev
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 698Aa4AA.Swz-UUz-316.PageS.Dev
+  udp: true
+
+- name: 美国CF3
+  server: 172.67.202.200
+  port: 2053
+  client-fingerprint: chrome
+  type: vless
+  uuid: 678ac895-92c2-4f27-a9d4-f1a89c5f5365
+  tls: true
+  tfo: false
+  servername: mositr.freenods.sbs
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: twitterfreecodes
+    headers:
+      Host: mositr.freenods.sbs
+  udp: true
+
+- name: 美国CF4
+  server: 172.64.87.40
+  port: 443
+  client-fingerprint: chrome
+  type: vless
+  uuid: 775213ac-3976-439a-8977-3277c0e4735d
+  tls: true
+  tfo: false
+  servername: fq521.6789.cloudns.be
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: twitterfreecodes
+    headers:
+      Host: fq521.6789.cloudns.be
+  udp: true
+
+- name: 美国CF5
+  server: 172.67.156.62
+  port: 8443
+  client-fingerprint: chrome
+  type: vless
+  uuid: d6b3de64-f0f8-4113-b49f-2660f3c031fb
+  tls: true
+  tfo: false
+  servername: 159d770e-fd74-4069-a73b-fe6ececa7951.f82aee4c-752c-4b0c-9793-380d4d76435c.ddnsgeek.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /fylink.pages.dev/proxyip=proxyip.aliyun.fxxk.dedyn.io
+    headers:
+      Host: 159d770e-fd74-4069-a73b-fe6ececa7951.f82aee4c-752c-4b0c-9793-380d4d76435c.ddnsgeek.com
+  udp: true
+
+- name: 美国CF6
+  server: 172.67.150.226
+  port: 8443
+  client-fingerprint: chrome
+  type: vless
+  uuid: d6b3de64-f0f8-4113-b49f-2660f3c031fb
+  tls: true
+  tfo: false
+  servername: 30388d70-6f5c-4d7c-8daa-9d3df7c5c526.9150e878-8296-4798-a172-c3fe66b8dee5.ddnsgeek.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /fylink.pages.dev/?ed=2048
+    headers:
+      Host: 30388d70-6f5c-4d7c-8daa-9d3df7c5c526.9150e878-8296-4798-a172-c3fe66b8dee5.ddnsgeek.com
+  udp: true
+
+- name: 美国CF7
+  server: 172.67.152.160
+  port: 443
+  client-fingerprint: chrome
+  type: vless
+  uuid: d7dd3a35b68b4992b319a85b8a1fc8e5
+  tls: true
+  tfo: false
+  servername: dns68.putata.eu.org
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: dns68.putata.eu.org
+  udp: true
+
+- name: 德国CF1
+  server: 104.16.108.120
+  port: 443
+  client-fingerprint: chrome
+  type: vless
+  uuid: 2cd6ed0f-636e-4e6c-9449-5a263d7a0fa5
+  tls: true
+  tfo: false
+  servername: cfed.tgzdyz2.top
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: tg@zdyz2
+    headers:
+      Host: cfed.tgzdyz2.top
+  udp: true
+
+- name: 德国CF2
+  server: 104.16.101.151
+  port: 8443
+  client-fingerprint: chrome
+  type: vless
+  uuid: 89b3cbba-e6ac-485a-9481-976a0415eab9
+  tls: true
+  tfo: false
+  servername: 698Aa4AA.Swz-UUz-316.PageS.Dev
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 698Aa4AA.Swz-UUz-316.PageS.Dev
+  udp: true
+
+- name: 德国CF1-IPV6
+  server: 2606:4700:8de2:956c:bee8:4554:83ea:cd97
+  port: 8443
+  client-fingerprint: chrome
+  type: vless
+  uuid: 2cd6ed0f-636e-4e6c-9449-5a263d7a0fa5
+  tls: true
+  tfo: false
+  servername: cfed.tgzdyz2.top
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: tg@zdyz2
+    headers:
+      Host: cfed.tgzdyz2.top
+  udp: true
+
+- name: 德国CF2-IPV6
+  server: 2606:4700:9ade:54ba:6919:80b3:1fa5:4c90
+  port: 8443
+  client-fingerprint: chrome
+  type: vless
+  uuid: 89b3cbba-e6ac-485a-9481-976a0415eab9
+  tls: true
+  tfo: false
+  servername: 698Aa4AA.Swz-UUz-316.PageS.Dev
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 698Aa4AA.Swz-UUz-316.PageS.Dev
+  udp: true
+
+- name: 德国CF3-IPV6
+  server: 2606:4700:8caf:c3b2:29b:2df3:12:6a1b
+  port: 2053
+  client-fingerprint: chrome
+  type: vless
+  uuid: 678ac895-92c2-4f27-a9d4-f1a89c5f5365
+  tls: true
+  tfo: false
+  servername: mositr.freenods.sbs
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: twitterfreecodes
+    headers:
+      Host: mositr.freenods.sbs
+  udp: true
+
+- name: 爱尔兰
+  server: 52.49.41.80
+  port: 2053
+  client-fingerprint: chrome
+  type: vless
+  uuid: 2cd6ed0f-636e-4e6c-9449-5a263d7a0fa5
+  tls: true
+  tfo: false
+  servername: cfed.tgzdyz2.top
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: tg@zdyz2
+    headers:
+      Host: cfed.tgzdyz2.top
+  udp: true
+
+- name: 西班牙
+  server: 185.114.72.67
+  port: 443
+  client-fingerprint: chrome
+  type: vless
+  uuid: 2cd6ed0f-636e-4e6c-9449-5a263d7a0fa5
+  tls: true
+  tfo: false
+  servername: cfed.tgzdyz2.top
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: tg@zdyz2
+    headers:
+      Host: cfed.tgzdyz2.top
+  udp: true
+
+- name: 新加坡
+  server: 47.236.180.51
+  port: 2087
+  client-fingerprint: chrome
+  type: vless
+  uuid: 2cd6ed0f-636e-4e6c-9449-5a263d7a0fa5
+  tls: true
+  tfo: false
+  servername: cfed.tgzdyz2.top
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: tg@zdyz2
+    headers:
+      Host: cfed.tgzdyz2.top
+  udp: true
+
+- name: 韩国
+  server: 49.165.150.206
+  port: 18916
+  client-fingerprint: chrome
+  type: vless
+  uuid: 2cd6ed0f-636e-4e6c-9449-5a263d7a0fa5
+  tls: true
+  tfo: false
+  servername: cfed.tgzdyz2.top
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: tg@zdyz2
+    headers:
+      Host: cfed.tgzdyz2.top
+  udp: true
+
+- name: 日本
+  server: 222.113.18.214
+  port: 37051
+  client-fingerprint: chrome
+  type: vless
+  uuid: 2cd6ed0f-636e-4e6c-9449-5a263d7a0fa5
+  tls: true
+  tfo: false
+  servername: cfed.tgzdyz2.top
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: tg@zdyz2
+    headers:
+      Host: cfed.tgzdyz2.top
+  udp: true
+
+- name: 英国
+  server: 143.47.243.144
+  port: 8443
+  client-fingerprint: chrome
+  type: vless
+  uuid: 89b3cbba-e6ac-485a-9481-976a0415eab9
+  tls: true
+  tfo: false
+  servername: 698Aa4AA.Swz-UUz-316.PageS.Dev
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 698Aa4AA.Swz-UUz-316.PageS.Dev
+  udp: true
+
+- name: 荷兰
+  server: 158.101.215.45
+  port: 8443
+  client-fingerprint: chrome
+  type: vless
+  uuid: 89b3cbba-e6ac-485a-9481-976a0415eab9
+  tls: true
+  tfo: false
+  servername: 698Aa4AA.Swz-UUz-316.PageS.Dev
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 698Aa4AA.Swz-UUz-316.PageS.Dev
+  udp: true
+
+- name: 印度
+  server: 129.154.254.254
+  port: 8443
+  client-fingerprint: chrome
+  type: vless
+  uuid: 89b3cbba-e6ac-485a-9481-976a0415eab9
+  tls: true
+  tfo: false
+  servername: 698Aa4AA.Swz-UUz-316.PageS.Dev
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 698Aa4AA.Swz-UUz-316.PageS.Dev
+  udp: true
+
+proxy-groups:
+# select 用户自行选择节点
+- name: PROXY
+  type: select
+  proxies:
+  - 🍃 负载均衡
+  - 🔰 节点选择
+  - ♻️ 自动选择
+  - ♻️ 香港节点
+  - ♻️ 美国IPV6
+  - ♻️ 美国节点
+  - 🚀 顺序选择
+  - DIRECT
+
+- name: 🔰 节点选择
+  type: select
+  proxies: &1
+  - 香港CF1-IPV6
+  - 香港CF2-IPV6
+  - 香港CF3-IPV6
+  - 香港CF4-IPV6
+  - 香港CF5-IPV6
+  - 香港CF6-IPV6
+  - 香港CF7-IPV6
+  - 美国CF1-IPV6
+  - 美国CF2-IPV6
+  - 美国CF3-IPV6
+  - 美国CF4-IPV6
+  - 美国CF5-IPV6
+  - 美国CF6-IPV6
+  - 美国CF7-IPV6
+  - 美国CF1
+  - 美国CF2
+  - 美国CF3
+  - 美国CF4
+  - 美国CF5
+  - 美国CF6
+  - 美国CF7
+  - 德国CF1
+  - 德国CF2
+  - 德国CF1-IPV6
+  - 德国CF2-IPV6
+  - 德国CF3-IPV6
+  - 爱尔兰
+  - 西班牙
+  - 新加坡
+  - 韩国
+  - 日本
+  - 英国
+  - 荷兰
+  - 印度
+
+# load-balance 将按照算法随机选择节点
+- name: 🍃 负载均衡
+  type: load-balance
+  url: https://cp.cloudflare.com/generate_204
+  interval: 3600
+  strategy: consistent-hashing # 可选 round-robin 和 sticky-sessions
+  proxies: *1
+
+# fallback 将按照 url 测试结果按照节点顺序选择
+- name: 🚀 顺序选择
+  type: fallback
+  url: https://cp.cloudflare.com/generate_204
+  interval: 3600
+  proxies: *1
+
+# url-test 将按照 url 测试结果使用延迟最低节点
+- name: ♻️ 自动选择
+  type: url-test
+  # tolerance: 150
+  # lazy: true
+  expected-status: 204 # 当健康检查返回状态码与期望值不符时，认为节点不可用
+  url: "https://cp.cloudflare.com/generate_204"
+  interval: 3600
+  proxies: *1
+
+# url-test 将按照 url 测试结果使用延迟最低节点
+- name: ♻️ 香港节点
+  type: url-test
+  # tolerance: 150
+  # lazy: true
+  expected-status: 204 # 当健康检查返回状态码与期望值不符时，认为节点不可用
+  url: "https://cp.cloudflare.com/generate_204"
+  interval: 3600
+  proxies: &2
+  - 香港CF1-IPV6
+  - 香港CF2-IPV6
+  - 香港CF3-IPV6
+  - 香港CF4-IPV6
+  - 香港CF5-IPV6
+  - 香港CF6-IPV6
+  - 香港CF7-IPV6
+
+# url-test 将按照 url 测试结果使用延迟最低节点
+- name: ♻️ 美国IPV6
+  type: url-test
+  # tolerance: 150
+  # lazy: true
+  expected-status: 204 # 当健康检查返回状态码与期望值不符时，认为节点不可用
+  url: "https://cp.cloudflare.com/generate_204"
+  interval: 3600
+  proxies: &2
+  - 美国CF1-IPV6
+  - 美国CF2-IPV6
+  - 美国CF3-IPV6
+  - 美国CF4-IPV6
+  - 美国CF5-IPV6
+  - 美国CF6-IPV6
+  - 美国CF7-IPV6
+
+
+# url-test 将按照 url 测试结果使用延迟最低节点
+- name: ♻️ 美国节点
+  type: url-test
+  # tolerance: 150
+  # lazy: true
+  expected-status: 204 # 当健康检查返回状态码与期望值不符时，认为节点不可用
+  url: "https://cp.cloudflare.com/generate_204"
+  interval: 3600
+  proxies: &2
+  - 美国CF1
+  - 美国CF2
+  - 美国CF3
+  - 美国CF4
+  - 美国CF5
+  - 美国CF6
+  - 美国CF7
+
+- name: GITHUB
+  type: select
+  proxies: &2
+  - PROXY
+  - 🍃 负载均衡
+  - 🔰 节点选择
+  - ♻️ 自动选择
+  - 🚀 顺序选择
+  - DIRECT
+
+- name: OPENAI
+  type: select
+  proxies: *2
+- name: BLOCK
+  type: select
+  proxies:
+  - REJECT
+  - DIRECT
+  - PROXY
+
+- name: FINAL
+  type: select
+  proxies:
+  - PROXY
+  - DIRECT
+
+rules:
+- DST-PORT,7895,REJECT
+- DST-PORT,7892,REJECT
+- IP-CIDR,198.18.0.1/16,REJECT,no-resolve
+- DST-PORT,7895,REJECT
+- DST-PORT,7892,REJECT
+- IP-CIDR,198.18.0.1/16,REJECT,no-resolve
+- DST-PORT,7895,REJECT
+- DST-PORT,7892,REJECT
+- IP-CIDR,198.18.0.1/16,REJECT,no-resolve
+- RULE-SET,proxy-classical,PROXY
+- RULE-SET,direct-classical,DIRECT
+- RULE-SET,block,BLOCK
+- RULE-SET,applications,DIRECT
+- RULE-SET,icloud,DIRECT
+- RULE-SET,apple,DIRECT
+- RULE-SET,github,GITHUB
+- RULE-SET,openai,OPENAI
+- RULE-SET,google,PROXY
+- RULE-SET,youtube,PROXY
+- RULE-SET,telegram,PROXY
+- RULE-SET,spotify,PROXY
+- RULE-SET,gfw,PROXY
+
+- DOMAIN-KEYWORD,stheadline,PROXY
+- DOMAIN-KEYWORD,yahoo,PROXY
+- DOMAIN-KEYWORD,gitbook,PROXY
+
+- GEOIP,LAN,DIRECT,no-resolve
+- GEOIP,CN,DIRECT
+- MATCH,FINAL
+
+
+rule-providers:
+  icloud:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/icloud.yaml
+    path: "./rule_provider/icloud.yaml"
+    interval: 86400
+    proxy: DIRECT
+  apple:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/apple.yaml
+    path: "./rule_provider/apple.yaml"
+    interval: 86400
+    proxy: DIRECT
+  gfw:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/domain/gfw.yaml
+    path: "./rule_provider/gfw.yaml"
+    interval: 86400
+    proxy: DIRECT
+  youtube:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/youtube.yaml
+    path: "./rule_provider/youtube.yaml"
+    interval: 86400
+    proxy: DIRECT
+  google:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/google.yaml
+    path: "./rule_provider/google.yaml"
+    interval: 86400
+    proxy: DIRECT
+  github:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/github.yaml
+    path: "./rule_provider/github.yaml"
+    interval: 86400
+    proxy: DIRECT
+  openai:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/openai.yaml
+    path: "./rule_provider/openai.yaml"
+    interval: 86400
+    proxy: DIRECT
+  telegram:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/telegram.yaml
+    path: "./rule_provider/telegram.yaml"
+    interval: 86400
+    proxy: DIRECT
+  spotify:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/spotify.yaml
+    path: "./rule_provider/spotify.yaml"
+    interval: 86400
+    proxy: DIRECT
+  applications:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/applications.yaml
+    path: "./rule_provider/applications.yaml"
+    interval: 86400
+    proxy: DIRECT
+  block:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/block.yaml
+    path: "./rule_provider/block.yaml"
+    interval: 86400
+    proxy: DIRECT
+  direct-classical:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/direct.yaml
+    path: "./rule_provider/direct.yaml"
+    interval: 86400
+    proxy: DIRECT
+  proxy-classical:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/proxy.yaml
+    path: "./rule_provider/proxy.yaml"
+    interval: 86400
+    proxy: DIRECT
+redir-port: 7892
+tproxy-port: 7895
+port: 7890
+socks-port: 7891
+secret: xV7TOpIV
+bind-address: "*"
+external-ui: "/usr/share/openclash/ui"
+authentication:
+- Clash:nGqtRJ0H
