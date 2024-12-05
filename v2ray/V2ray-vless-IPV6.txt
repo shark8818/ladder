@@ -1,0 +1,7 @@
+vless://8e014e26-94f5-43ef-bf64-c0176e3904b7@[2606:4700:99e0:24e6:ab9e:ce7:1ecd:7254]:8443?encryption=none&security=tls&sni=vl.shark8818.us.kg&type=ws&host=vl.shark8818.us.kg&path=%2F%3Fed%3D2560#%E9%A6%99%E6%B8%AFCF1-IPV6
+vless://8e014e26-94f5-43ef-bf64-c0176e3904b7@[2606:4700:9649:93cd:d25c:bbec:659f:ae78]:2083?encryption=none&security=tls&sni=jimvl.jim8818.us.kg&type=ws&host=jimvl.jim8818.us.kg&path=%2F%3Fed%3D2560#%E9%A6%99%E6%B8%AFCF2-IPV6
+vless://8e014e26-94f5-43ef-bf64-c0176e3904b7@[2606:4700:f4:0:d621:1cb5:b97e:d0eb]:2083?encryption=none&security=tls&sni=jackvl.jack8818.us.kg&type=ws&host=jackvl.jack8818.us.kg&path=%2F%3Fed%3D2560#%E9%A6%99%E6%B8%AFCF3-IPV6
+vless://8e014e26-94f5-43ef-bf64-c0176e3904b7@[2606:4700:8d92:6492:3142:3634:86f3:bfdd]:443?encryption=none&security=tls&sni=vl.shark8818.us.kg&type=ws&host=vl.shark8818.us.kg&path=%2F%3Fed%3D2560#%E5%BE%B7%E5%9B%BDCF1-IPV6
+vless://8e014e26-94f5-43ef-bf64-c0176e3904b7@[2606:4700:8d92:d8ba:f17a:e94:b24b:47e1]:2087?encryption=none&security=tls&sni=jimvl.jim8818.us.kg&type=ws&host=jimvl.jim8818.us.kg&path=%2F%3Fed%3D2560#%E5%BE%B7%E5%9B%BDCF2-IPV6
+vless://8e014e26-94f5-43ef-bf64-c0176e3904b7@[2606:4700:3015:507e:8051:7c69:740b:f7f3]:2053?encryption=none&security=tls&sni=vl.shark8818.us.kg&type=ws&host=vl.shark8818.us.kg&path=%2F%3Fed%3D2560#%E7%BE%8E%E5%9B%BDCF1-IPV6
+vless://8e014e26-94f5-43ef-bf64-c0176e3904b7@[2606:4700:3015:7409:9e8f:f895:24e8:7fdc]:2087?encryption=none&security=tls&sni=jimvl.jim8818.us.kg&type=ws&host=jimvl.jim8818.us.kg&path=%2F%3Fed%3D2560#%E7%BE%8E%E5%9B%BDCF2-IPV6
