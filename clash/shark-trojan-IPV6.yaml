@@ -1,0 +1,595 @@
+---
+mixed-port: 7893
+tcp-concurrent: false
+allow-lan: true
+ipv6: false
+mode: rule
+log-level: info
+global-client-fingerprint: chrome
+find-process-mode: strict
+external-controller: 0.0.0.0:9090
+geodata-mode: true
+geo-auto-update: true
+geo-update-interval: 3
+geox-url:
+  geoip: https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat
+  geosite: https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat
+  mmdb: https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb
+  asn: https://mirror.ghproxy.com/https://🐱 GITHUB.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb
+profile:
+  store-selected: true
+  store-fake-ip: true
+sniffer:
+  enable: true
+  parse-pure-ip: true
+  sniff:
+    HTTP:
+      ports:
+      - 80
+      - 8080-8800
+      override-destination: true
+    TLS:
+      ports:
+      - 443
+      - 8443
+    QUIC:
+      ports:
+      - 443
+      - 8443
+  skip-domain:
+  - Mijia Cloud
+  - dlg.io.mi.com
+  - "+.apple.com"
+dns:
+  enable: true
+  ipv6: false
+  prefer-h3: true
+  listen: 0.0.0.0:7874
+  enhanced-mode: redir-host
+  fake-ip-filter:
+  - "*.lan"
+  - cable.auth.com
+  - "+.msftconnecttest.com"
+  - "+.msftncsi.com"
+  - network-test.debian.org
+  - detectportal.firefox.com
+  - resolver1.opendns.com
+  - "+.srv.nintendo.net"
+  - "+.stun.playstation.net"
+  - xbox.*.microsoft.com
+  - "+.xboxlive.com"
+  - stun.*
+  - global.turn.twilio.com
+  - global.stun.twilio.com
+  - localhost.*.qq.com
+  - "+.logon.battlenet.com.cn"
+  - "+.logon.battle.net"
+  - "+.blzstatic.cn"
+  - "+.cmpassport.com"
+  - id6.me
+  - open.e.189.cn
+  - mdn.open.wo.cn
+  - opencloud.wostore.cn
+  - auth.wosms.cn
+  - "+.jegotrip.com.cn"
+  - "+.icitymobile.mobi"
+  - "+.pingan.com.cn"
+  - "+.cmbchina.com"
+  - "+.cmbchina.com.cn"
+  - pool.ntp.org
+  - "+.pool.ntp.org"
+  - ntp.*.com
+  - time.*.com
+  - ntp?.*.com
+  - time?.*.com
+  - time.*.gov
+  - time.*.edu.cn
+  - "+.ntp.org.cn"
+  - time.*.apple.com
+  default-nameserver:
+  - 223.5.5.5
+  - 119.29.29.29
+  nameserver-policy:
+    #www.baidu.com: 114.114.114.114
+    "+.internal.crop.com": 10.0.0.1
+    +.google.cn: https://doh.pub/dns-query
+    geosite:private,apple: https://dns.alidns.com/dns-query
+    rule-set:google: 8.8.8.8
+  nameserver:
+  - https://doh.pub/dns-query
+  - https://dns.alidns.com/dns-query
+  fallback:
+  - https://1.1.1.2/dns-query
+  - https://1.0.0.2/dns-query
+  - https://208.67.222.222/dns-query
+  - https://208.67.220.220/dns-query
+  - https://9.9.9.9/dns-query
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+    - gfw
+    ipcidr:
+    - 240.0.0.0/4
+    - 0.0.0.0/32
+    domain:
+    - "+.google.com"
+    - "+.GITHUB.com"
+    - "+.facebook.com"
+    - "+.twitter.com"
+    - "+.youtube.com"
+    - "+.google.cn"
+    - "+.googleapis.cn"
+    - "+.googleapis.com"
+proxies:
+- name: 香港CF1-IPV6
+  server: 2606:4700:99e0:24e6:ab9e:ce7:1ecd:7254
+  port: 8443
+  type: trojan
+  password: 48d69da465
+  sni: oneal.shark8818.us.kg
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: oneal.shark8818.us.kg
+  udp: true
+
+- name: 香港CF2-IPV6
+  server: 2606:4700:f4:0:87ec:d47e:2702:92ed
+  port: 443
+  type: trojan
+  password: 48d69da465
+  sni: rowan.jim8818.us.kg
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: rowan.jim8818.us.kg
+  udp: true
+
+- name: 香港CF3-IPV6
+  server: 2606:4700:f4:0:d621:1cb5:b97e:d0eb
+  port: 2053
+  type: trojan
+  password: 48d69da465
+  sni: ma.jack8818.us.kg
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: ma.jack8818.us.kg
+  udp: true
+
+- name: 香港CF4-IPV6
+  server: 2606:4700:f4::f62a
+  port: 2053
+  type: trojan
+  password: 48d69da465
+  sni: mariatj.green8818.us.kg
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: mariatj.green8818.us.kg
+  udp: true
+
+- name: 香港CF5-IPV6
+  server: 2606:4700:f4::e58d:7c96:68fc
+  port: 2053
+  type: trojan
+  password: 48d69da465
+  sni: davytj.jones8818.us.kg
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: davytj.jones8818.us.kg
+  udp: true
+
+- name: 香港CF6-IPV6
+  server: 2606:4700:f4::e58d:7c96:68fc
+  port: 2053
+  type: trojan
+  password: 48d69da465
+  sni: billtj.bill7188.us.kg
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: billtj.bill7188.us.kg
+  udp: true
+
+- name: 美国CF1-IPV6
+  server: 2606:4700:3015:507e:8051:7c69:740b:f7f3
+  port: 2083
+  type: trojan
+  password: 48d69da465
+  sni: oneal.shark8818.us.kg
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: oneal.shark8818.us.kg
+  udp: true
+
+- name: 美国CF2-IPV6
+  server: 2606:4700:3015:7409:9e8f:f895:24e8:7fdc
+  port: 2087
+  type: trojan
+  password: 48d69da465
+  sni: rowan.jim8818.us.kg
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: rowan.jim8818.us.kg
+  udp: true
+
+- name: 德国CF1-IPV6
+  server: 2606:4700:8d92:6492:3142:3634:86f3:bfdd
+  port: 8443
+  type: trojan
+  password: 48d69da465
+  sni: oneal.shark8818.us.kg
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: oneal.shark8818.us.kg
+  udp: true
+
+- name: 德国CF2-IPV6
+  server: 2606:4700:8d92:d8ba:f17a:e94:b24b:47e1
+  port: 2096
+  type: trojan
+  password: 48d69da465
+  sni: rowan.jim8818.us.kg
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: rowan.jim8818.us.kg
+  udp: true
+
+
+- name: MyVISA
+  server: www.visa.com
+  port: 8443
+  type: trojan
+  password: 48d69da465
+  sni: oneal.shark8818.us.kg
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: oneal.shark8818.us.kg
+  udp: true
+
+- name: Serv00-S16
+  type: vmess
+  server: 2606:4700:f4::e58d:7c96:68fc
+  port: 443
+  uuid: 89c80d54-2ca1-4adb-a2a0-5ab43ad44d54
+  cipher: none
+  alterId: 0
+  skip-cert-verify: true
+  network: ws
+  tls: true
+  sni: serv00-play.shark8818.us.kg
+  ws-opts:
+    headers:
+      host: serv00-play.shark8818.us.kg
+    path: /serv00?ed=2048
+  udp: true
+
+- name: Serv00-S15
+  type: vmess
+  server: 2606:4700:f4:0:d621:1cb5:b97e:d0eb
+  port: 443
+  uuid: 1c9ec30e-0ed9-42b1-b522-8aaa6fd1c793
+  cipher: none
+  alterId: 0
+  skip-cert-verify: true
+  network: ws
+  tls: true
+  sni: serv0015.jack8818.us.kg
+  ws-opts:
+    headers:
+      host: serv0015.jack8818.us.kg
+    path: /serv00?ed=2048
+  udp: true
+
+
+- name: Serv00-S14
+  type: vmess
+  server: 2606:4700:f4:0:87ec:d47e:2702:92ed
+  port: 443
+  uuid: e174dd1b-91d0-46fc-831d-0b43f48eb0b4
+  cipher: none
+  alterId: 0
+  skip-cert-verify: true
+  network: ws
+  tls: true
+  sni: serv0014-play.jim8818.us.kg
+  ws-opts:
+    headers:
+      host: serv0014-play.jim8818.us.kg
+    path: /serv00?ed=2048
+  udp: true
+
+proxy-groups:
+# select 用户自行选择节点
+- name: PROXY
+  type: select
+  proxies:
+  - 🌎 Serv00
+  - 🌏 香港V6
+  - 🌎 美国V6
+  - 🌍 德国V6
+  - ⚖️ 负载均衡
+  - 🔰 节点选择
+  - ♻️ 自动选择
+  - 🚀 顺序选择
+  - DIRECT
+
+- name: 🔰 节点选择
+  type: select
+  proxies: &1
+  - 香港CF1-IPV6
+  - 香港CF2-IPV6
+  - 香港CF3-IPV6
+  - 香港CF4-IPV6
+  - 香港CF5-IPV6
+  - 香港CF6-IPV6
+  - 美国CF1-IPV6
+  - 美国CF2-IPV6
+  - 德国CF1-IPV6
+  - 德国CF2-IPV6
+  - MyVISA
+  - Serv00-S16
+  - Serv00-S15
+  - Serv00-S14
+  
+# load-balance 将按照算法随机选择节点
+- name: ⚖️ 负载均衡
+  type: load-balance
+  url: https://cp.cloudflare.com/generate_204
+  interval: 3600
+  strategy: consistent-hashing # 可选 round-robin 和 sticky-sessions
+  proxies: *1
+
+# fallback 将按照 url 测试结果按照节点顺序选择
+- name: 🚀 顺序选择
+  type: fallback
+  url: https://cp.cloudflare.com/generate_204
+  interval: 3600
+  proxies: *1
+
+# url-test 将按照 url 测试结果使用延迟最低节点
+- name: ♻️ 自动选择
+  type: url-test
+  # tolerance: 150
+  # lazy: true
+  expected-status: 204 # 当健康检查返回状态码与期望值不符时，认为节点不可用
+  url: "https://cp.cloudflare.com/generate_204"
+  interval: 3600
+  proxies: *1
+
+# url-test 将按照 url 测试结果使用延迟最低节点
+- name: 🌎 Serv00
+  type: url-test
+  # tolerance: 150
+  # lazy: true
+  expected-status: 204 # 当健康检查返回状态码与期望值不符时，认为节点不可用
+  url: "https://cp.cloudflare.com/generate_204"
+  interval: 3600
+  proxies: &2
+  - Serv00-S16
+  - Serv00-S15
+  - Serv00-S14
+
+# url-test 将按照 url 测试结果使用延迟最低节点
+- name: 🌏 香港V6
+  type: url-test
+  # tolerance: 150
+  # lazy: true
+  expected-status: 204 # 当健康检查返回状态码与期望值不符时，认为节点不可用
+  url: "https://cp.cloudflare.com/generate_204"
+  interval: 3600
+  proxies: &2
+  - 香港CF1-IPV6
+  - 香港CF2-IPV6
+  - 香港CF3-IPV6
+
+# url-test 将按照 url 测试结果使用延迟最低节点
+- name: 🌎 美国V6
+  type: url-test
+  # tolerance: 150
+  # lazy: true
+  expected-status: 204 # 当健康检查返回状态码与期望值不符时，认为节点不可用
+  url: "https://cp.cloudflare.com/generate_204"
+  interval: 3600
+  proxies: &2
+  - 美国CF1-IPV6
+  - 美国CF2-IPV6
+
+# url-test 将按照 url 测试结果使用延迟最低节点
+- name: 🌍 德国V6
+  type: url-test
+  # tolerance: 150
+  # lazy: true
+  expected-status: 204 # 当健康检查返回状态码与期望值不符时，认为节点不可用
+  url: "https://cp.cloudflare.com/generate_204"
+  interval: 3600
+  proxies: &2
+  - 德国CF1-IPV6
+  - 德国CF2-IPV6
+  
+
+- name: 🐱 GITHUB
+  type: select
+  proxies: &2
+  - PROXY
+  - DIRECT
+
+- name: 🤖 OPENAI
+  type: select
+  proxies: *2
+
+- name: ⛔ BLOCK
+  type: select
+  proxies:
+  - REJECT
+  - DIRECT
+  - PROXY
+
+- name: 🐟 漏网之鱼
+  type: select
+  proxies:
+  - PROXY
+  - DIRECT
+
+rules:
+- DOMAIN-KEYWORD,stheadline,PROXY
+- DOMAIN-KEYWORD,91md,PROXY
+- DOMAIN-KEYWORD,yahoo,PROXY
+- DOMAIN-KEYWORD,gitbook,PROXY
+- DOMAIN-KEYWORD,mytvsuper,PROXY
+- DOMAIN-KEYWORD,pixman,PROXY
+
+- DOMAIN-KEYWORD,baidu,DIRECT
+
+- DOMAIN-KEYWORD,youtube,PROXY
+- DOMAIN-KEYWORD,google,PROXY
+
+- DOMAIN-KEYWORD,4gtv,PROXY
+
+- DST-PORT,7895,REJECT
+- DST-PORT,7892,REJECT
+- IP-CIDR,198.18.0.1/16,REJECT,no-resolve
+- DST-PORT,7895,REJECT
+- DST-PORT,7892,REJECT
+- IP-CIDR,198.18.0.1/16,REJECT,no-resolve
+- DST-PORT,7895,REJECT
+- DST-PORT,7892,REJECT
+- IP-CIDR,198.18.0.1/16,REJECT,no-resolve
+- RULE-SET,proxy-classical,PROXY
+- RULE-SET,direct-classical,DIRECT
+- RULE-SET,block,⛔ BLOCK
+- RULE-SET,applications,DIRECT
+- RULE-SET,icloud,DIRECT
+- RULE-SET,apple,DIRECT
+- RULE-SET,github,🐱 GITHUB
+- RULE-SET,openai,🤖 OPENAI
+#- RULE-SET,google,PROXY
+#- RULE-SET,youtube,PROXY
+- RULE-SET,telegram,PROXY
+- RULE-SET,spotify,PROXY
+- RULE-SET,gfw,PROXY
+- GEOIP,LAN,DIRECT,no-resolve
+- GEOIP,CN,DIRECT
+- MATCH,🐟 漏网之鱼
+
+
+rule-providers:
+  icloud:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/icloud.yaml
+    path: "./rule_provider/icloud.yaml"
+    interval: 86400
+    proxy: DIRECT
+  apple:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/apple.yaml
+    path: "./rule_provider/apple.yaml"
+    interval: 86400
+    proxy: DIRECT
+  gfw:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/domain/gfw.yaml
+    path: "./rule_provider/gfw.yaml"
+    interval: 86400
+    proxy: DIRECT
+  youtube:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/youtube.yaml
+    path: "./rule_provider/youtube.yaml"
+    interval: 86400
+    proxy: DIRECT
+  google:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/google.yaml
+    path: "./rule_provider/google.yaml"
+    interval: 86400
+    proxy: DIRECT
+  github:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/github.yaml
+    path: "./rule_provider/github.yaml"
+    interval: 86400
+    proxy: DIRECT
+  openai:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/openai.yaml
+    path: "./rule_provider/openai.yaml"
+    interval: 86400
+    proxy: DIRECT
+  telegram:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/telegram.yaml
+    path: "./rule_provider/telegram.yaml"
+    interval: 86400
+    proxy: DIRECT
+  spotify:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/spotify.yaml
+    path: "./rule_provider/spotify.yaml"
+    interval: 86400
+    proxy: DIRECT
+  applications:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/applications.yaml
+    path: "./rule_provider/applications.yaml"
+    interval: 86400
+    proxy: DIRECT
+  block:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/block.yaml
+    path: "./rule_provider/block.yaml"
+    interval: 86400
+    proxy: DIRECT
+  direct-classical:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/direct.yaml
+    path: "./rule_provider/direct.yaml"
+    interval: 86400
+    proxy: DIRECT
+  proxy-classical:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/Sub@main/rules/classical/proxy.yaml
+    path: "./rule_provider/proxy.yaml"
+    interval: 86400
+    proxy: DIRECT
+redir-port: 7892
+tproxy-port: 7895
+port: 7890
+socks-port: 7891
+secret: xV7TOpIV
+bind-address: "*"
+external-ui: "/usr/share/openclash/ui"
+authentication:
+- Clash:nGqtRJ0H
